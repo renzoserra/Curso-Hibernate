@@ -24,7 +24,11 @@ public class Employee implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(name = "firts_name", length = 30, nullable = false)
     private String firtsName;
+
+    @Column(name = "last_name")
+    private String lastName;
 
     @Column(unique = true)
     private String email;
@@ -35,7 +39,9 @@ public class Employee implements Serializable {
 
     private Boolean married;
 
+    @Column(name = "birth_date")
     private LocalDate birthDate;
 
+    @Column(name = "register_date")
     private LocalDateTime registerDate;
 }
