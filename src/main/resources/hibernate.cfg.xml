@@ -17,10 +17,12 @@
 <!--     <property name="hibernate.hbm2ddl.auto">create</property>-->
     <property name="hibernate.hbm2ddl.auto">create</property>
 <!--    Para importar múltiples archivos sql utilizamos:-->
-<!--    <property name="hibernate.hbm2ddl.import_files">import.sql,data.sql</property>-->
+    <property name="hibernate.hbm2ddl.import_files">import.sql,data.sql</property>
 
     <!-- entities -->
     <mapping class="org.example.entities.Employee"/>
+    <mapping class="org.example.entities.Car"/>
+
 
 
   </session-factory>
