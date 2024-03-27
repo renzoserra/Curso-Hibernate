@@ -17,19 +17,49 @@ public interface EmployeeDao {
      * @return lista de emepleados
      */
     List<Employee> findAll();
+    /**
+     * Obtener todos los empleados de la base de datos según el criterio
+     * @return lista de emepleados
+     */
+    List<Employee> findAllCriteria();
 
     /**
      * Obtener un empleado por su id
-     * @param id
+     * @param id por metodo hql
      * @return empleado
      */
     Employee findById(Long id);
 
     /**
+     * Obtener un empleado por su id
+     * @param id por Criteria
+     * @return empleado
+     */
+    Employee findByIdCriteria(Long id);
+
+    /**
      * Obtener un listado de los empleados por su edad
-     * @param age
+     * @param lastName
      * @return lista de los empleados
      */
+    List<Employee> findByLastNameLikeCriteria(String lastName);
+
+    /**
+     * Filtrar por edad. Mayor de determinado número
+     * Criteria
+     * @param age
+     * @return
+     */
+    List<Employee> findByAgeGreaterCriteria(Integer age);
+
+    /**
+     * Filtrar por rango de edad entre dos números
+     * Criteria
+     * @param min
+     * @param max
+     * @return
+     */
+    List<Employee> findByAgeBetweenCriteria(Integer min, Integer max);
     List<Employee> findByAge(Integer age);
 
     /**
