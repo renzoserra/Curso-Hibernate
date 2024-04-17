@@ -3,12 +3,14 @@ package org.example.entities;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.*;
 
 //Representa la tabla "ob_employees" en la base de datos
 
@@ -44,4 +46,36 @@ public class Employee implements Serializable {
 
     @Column(name = "register_date")
     private LocalDateTime registerDate;
+
+    @ElementCollection
+    private List<String> nicknames = new ArrayList<>();
+
+    @ElementCollection
+    private List<Integer> postalCodes = new ArrayList<>();
+
+    @ElementCollection
+    private Set<String> creditCards = new HashSet<>();
+
+    @ElementCollection
+    private Map<String, String> phones = new HashMap<>();
+
+
+    // Por defecto se almancena en bd por Ordinal (númerico)
+    // Con EnumType se almacena en bd por String tal cual como fue creado en la clase
+    @Enumerated(EnumType.STRING)
+    EmployeeCategory category;
+
+
+
+    public Employee(Long id, String firstName, String lastName, String email, Integer age, Double salary, Boolean married, LocalDate birthDate, LocalDateTime registerDate) {
+        this.id = id;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.age = age;
+        this.salary = salary;
+        this.married = married;
+        this.birthDate = birthDate;
+        this.registerDate = registerDate;
+    }
 }
